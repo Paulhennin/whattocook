@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
-export default function List({ allSettings, meals }) {
+export default function List({ meals }) {
   return (
-    <section className="cards-deck main" key={meals}>
+    <section className="cards-deck" key={meals}>
       {meals}
     </section>
   );
 }
 
 List.propTypes = {
-  allSettings: PropTypes.func.isRequired,
   meals: PropTypes.array.isRequired,
 };

@@ -17,7 +17,12 @@ import {
 
 import './style.scss';
 
-export default function SideBar({ search, allSettings }) {
+export default function SideBar({
+  search,
+  allSettings,
+  data,
+  setMeals,
+}) {
   const handleSideBarClick = () => {
     const sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('active');
@@ -25,9 +30,12 @@ export default function SideBar({ search, allSettings }) {
 
   const handleCatSearch = (e) => {
     e.preventDefault();
-    search(e.currentTarget.id);
+    search(e.currentTarget.id, data, setMeals);
   };
 
+  const handleAllSettings = () => {
+    allSettings(data, setMeals);
+  }
   return (
     <>
       <div className="sidebar">
@@ -44,7 +52,7 @@ export default function SideBar({ search, allSettings }) {
             <input type="text" placeholder="Recherche..." />
             <span className="tooltip">Search</span>
           </li>
-          <li className="nav_items" onClick={allSettings} id="All">
+          <li className="nav_items" onClick={handleAllSettings} id="All">
             <a href="#">
               <MdGridView className="react_icons" />
               <span className="links_name">All</span>
@@ -116,4 +124,6 @@ export default function SideBar({ search, allSettings }) {
 SideBar.propTypes = {
   search: PropTypes.func.isRequired,
   allSettings: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+  setMeals: PropTypes.func.isRequired,
 };

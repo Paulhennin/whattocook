@@ -40,7 +40,6 @@ body {
       opacity: 1;
       pointer-events: none;
       transition: 0.5s;
-
     }
 
     & #sidebar_btn {
@@ -61,24 +60,6 @@ body {
       width: calc(100% - 240px);
       left: 240px;
     }
-    & #log_out {
-      left: 88%;
-    }
-    & .profile_details {
-      opacity: 1 !important;
-      transition: 0.8s !important;
-
-    }
-    & .profile_content {
-      padding: 0px 0px !important;
-      transition: 0.5s;
-    }
-    & .profile {
-      border-radius: 0px !important;
-      padding: 10px 10px !important;
-      transition: 0.5s;
-
-    }
   }
 }
 .links_name {
@@ -95,6 +76,7 @@ body {
 .sidebar .logo_content .logo {
   color: black;
   display: flex;
+  pointer-events: none;
   opacity: 0;
   height: 50px;
   width: 100%;

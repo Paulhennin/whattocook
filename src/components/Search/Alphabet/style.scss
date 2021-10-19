@@ -1,0 +1,12 @@
+@use 'src/styles/vars' as v;
+
+.alphabet {
+  width: 100%;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.search-by-alphabet {
+  cursor: pointer;
+
+}

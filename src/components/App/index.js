@@ -4,7 +4,14 @@ import React, { useState, useEffect } from 'react';
 // == Import
 import List from 'src/components/List';
 import SideBar from 'src/components/SideBar';
+import Alphabet from 'src/components/Search/Alphabet';
 import data from 'src/data/allMeals.json';
+import {
+  searchRandomMeals,
+  allSettings,
+  search,
+  searchByLetter,
+} from 'src/selectors/search';
 import './styles.css';
 
 // == Composant
@@ -12,71 +19,9 @@ export default function App() {
   const [meals, setMeals] = useState([]);
   const [randomMeals, setRandomMeals] = useState([]);
 
-  const search = (cat) => {
-    const list = data.meals.map((obj) => {
-      if (Object.values(obj).includes(cat)) {
-        return (
-          <div key={obj.strMeal} className="card">
-            <div className="card_thumbs">
-              <img src={obj.strMealThumb} className="card_thumbs_img" alt="how it looks like" />
-            </div>
-            <div className="card_desc">
-              <div className="card_desc_name">{obj.strMeal}</div>
-              <div className="card_desc_nationality">{obj.strArea}</div>
-              <div className="card_desc_category">{obj.strCategory}</div>
-              <div className="card_desc_instructions">{obj.strInstructions.substr(0, 300)} ...</div>
-            </div>
-          </div>
-        );
-      }
-    });
-    setMeals(list);
-  };
-
-  const searchRandomMeals = () => {
-    console.log("bla", randomMeals);
-    const list = randomMeals.map((obj) => {
-      <></>;
-      return (
-        <div key={obj.strMeal} className="card">
-          <div className="card_thumbs">
-            <img src={obj.strMealThumb} className="card_thumbs_img" alt="how it looks like" />
-          </div>
-          <div className="card_desc">
-            <div className="card_desc_name">{obj.strMeal}</div>
-            <div className="card_desc_nationality">{obj.strArea}</div>
-            <div className="card_desc_category">{obj.strCategory}</div>
-            <div className="card_desc_instructions">{obj.strInstructions.substr(0, 300)} ...</div>
-          </div>
-        </div>
-      );
-    });
-    setMeals(list);
-  };
-
-  const allSettings = () => {
-    const list = data.meals.map((obj) => {
-      <></>;
-      return (
-        <div key={obj.strMeal} className="card">
-          <div className="card_thumbs">
-            <img src={obj.strMealThumb} className="card_thumbs_img" alt="how it looks like" />
-          </div>
-          <div className="card_desc">
-            <div className="card_desc_name">{obj.strMeal}</div>
-            <div className="card_desc_nationality">{obj.strArea}</div>
-            <div className="card_desc_category">{obj.strCategory}</div>
-            <div className="card_desc_instructions">{obj.strInstructions.substr(0, 300)} ...</div>
-          </div>
-        </div>
-      );
-    });
-    setMeals(list);
-  };
-
   useEffect(() => {
     const list = [];
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 20; i++) {
       const random = Math.round(Math.random() * (data.meals.length));
       const meal = data.meals[random];
       if (!list.includes(meal)) {
@@ -87,7 +32,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    searchRandomMeals();
+    searchRandomMeals(randomMeals, setMeals);
   }, [randomMeals]);
 
   return (
@@ -95,11 +40,23 @@ export default function App() {
       <SideBar
         search={search}
         allSettings={allSettings}
+        data={data}
+        setMeals={setMeals}
       />
-      <List
-        allSettings={allSettings}
-        meals={meals}
-      />
+      <div className="main">
+        <Alphabet
+          searchByLetter={searchByLetter}
+          setMeals={setMeals}
+          data={data}
+          meals={meals}
+        />
+        <List
+          allSettings={allSettings}
+          data={data}
+          setMeals={setMeals}
+          meals={meals}
+        />
+      </div>
     </div>
   );
 }

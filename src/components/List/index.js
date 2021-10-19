@@ -4,11 +4,8 @@ import PropTypes from 'prop-types';
 import './style.scss';
 
 export default function List({ allSettings, meals }) {
-  useEffect(() => {
-    allSettings();
-  }, []);
   return (
-    <section className="cards-deck main">
+    <section className="cards-deck main" key={meals}>
       {meals}
     </section>
   );

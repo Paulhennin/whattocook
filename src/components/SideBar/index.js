@@ -9,7 +9,7 @@ import {
   GiChicken,
 } from 'react-icons/gi';
 import { GrIceCream } from 'react-icons/gr';
-import { MdOutlineSearch, MdOutlineSpaceDashboard, MdGridView } from 'react-icons/md';
+import { MdOutlineSearch, MdOutlineViewSidebar, MdOutlineSpaceDashboard, MdGridView } from 'react-icons/md';
 import {
   BiHeart,
   BiCog,
@@ -50,6 +50,13 @@ export default function SideBar({ search, allSettings }) {
               <span className="links_name">All</span>
             </a>
             <span className="tooltip">All</span>
+          </li>
+          <li className="nav_items" onClick={handleCatSearch} id="Side">
+            <a href="#">
+              <MdOutlineViewSidebar className="react_icons" />
+              <span className="links_name">Side</span>
+            </a>
+            <span className="tooltip">Side</span>
           </li>
           <li className="nav_items" onClick={handleCatSearch} id="Chicken">
             <a href="#">

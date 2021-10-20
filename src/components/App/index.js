@@ -1,11 +1,18 @@
 // == Import npm
 import React, { useState, useEffect } from 'react';
 
-// == Import
+// == Import Components
 import List from 'src/components/List';
 import SideBar from 'src/components/SideBar';
 import Alphabet from 'src/components/Search/Alphabet';
+
+// == Import JSON data
+
 import data from 'src/data/allMeals.json';
+import ingredients from 'src/data/ingredients.json';
+
+// == Import Selectors functions
+
 import {
   searchRandomMeals,
   allSettings,
@@ -13,6 +20,7 @@ import {
   searchByLetter,
 } from 'src/selectors/search';
 import './styles.css';
+import IngredientsFilter from '../IngredientsFilter';
 
 // == Composant
 export default function App() {
@@ -49,6 +57,10 @@ export default function App() {
           setMeals={setMeals}
           data={data}
           meals={meals}
+        />
+        <IngredientsFilter
+          ingredients={ingredients}
+          setMeals={setMeals}
         />
         <List
           allSettings={allSettings}

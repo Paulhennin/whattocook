@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import logo from 'src/assets/whattocook_logo.png';
 import {
   GiHamburgerMenu,
   GiBigWave,
@@ -41,7 +42,7 @@ export default function SideBar({
       <div className="sidebar">
         <div className="logo_content" onClick={handleSideBarClick}>
           <div className="logo">
-            <MdOutlineSpaceDashboard className="react_icons" />
+            <img src={logo} alt="Whattocook logo that represent a pressure cooker with question marks inside" className="logo_img" />
             <div className="logo_name">Dashboard</div>
           </div>
           <GiHamburgerMenu className="" id="sidebar_btn" />

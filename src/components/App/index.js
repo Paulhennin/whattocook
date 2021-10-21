@@ -61,6 +61,8 @@ export default function App() {
         <IngredientsFilter
           ingredients={ingredients}
           setMeals={setMeals}
+          meals={meals}
+          data={data}
         />
         <List
           allSettings={allSettings}
